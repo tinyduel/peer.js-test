@@ -13,5 +13,15 @@ peer.on('open', function(id) {
 button.onclick = function () {
     var conn = peer.connect(document.getElementById("connectId").innerHTML);
 };
+conn.on('open', function() {
+  // Receive messages
+  conn.on('data', function(data) {
+    console.log('Received', data);
+  });
+
+  // Send messages
+  conn.send('Hello!');
+});
+
 })();
 </script>
