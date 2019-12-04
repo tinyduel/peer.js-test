@@ -11,5 +11,14 @@ peer.on('open', function(id) {
     console.log('My peer ID is: ' + id);
     document.getElementById("peerId").innerHTML = id;
 });
+conn.on('open', function() {
+  // Receive messages
+  conn.on('data', function(data) {
+    console.log('Received', data);
+  });
+
+  // Send messages
+  conn.send('Hello!');
+});
 })();
 </script>
