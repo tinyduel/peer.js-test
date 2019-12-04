@@ -1,5 +1,16 @@
 <title>Chat room</title>
-<textarea placeholder="id to connect to" id="connectId"></textarea><button>connect</button>
+<textarea placeholder="id to connect to" id="connectId"></textarea><button onClick="connect">connect</button>
 <textarea placeholder="messgae to send" id="message"></textarea><button>send</button>
 <script src="https://unpkg.com/peerjs@1.0.4/dist/peerjs.min.js"></script>
-<script src="connect.js">
+<script type="text/javascript">
+(function () {
+console.log("hello")
+var peer = new Peer();
+peer.on('open', function(id) {
+    console.log('My peer ID is: ' + id);
+});
+function connect() {
+  var conn = peer.connect(document.getElementById("connectId"));
+};
+})();
+</script>
